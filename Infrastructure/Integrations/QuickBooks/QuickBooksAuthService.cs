@@ -15,29 +15,27 @@ namespace Infrastructure.Integrations.QuickBooks
 
         public string GetAuthorizationUrl()
         {
-            //var oauth2Client = new OAuth2Client(
-            //    _settings.ClientId,
-            //    "",
-            //    _settings.RedirectUri,
-            //    _settings.Environment
-            //);
+            var oauth2Client = new OAuth2Client(
+                _settings.ClientId,
+                "",
+                _settings.RedirectUri,
+                _settings.Environment
+            );
 
-            //return oauth2Client.GetAuthorizationURL();
-            return "";
+            return oauth2Client.GetAuthorizationURL();
         }
 
         public async Task<string> ExchangeCodeForToken(string authCode)
         {
-            //var oauth2Client = new OAuth2Client(
-            //    _settings.ClientId,
-            //    _settings.ClientSecret,
-            //    _settings.RedirectUri
-            //);
+            var oauth2Client = new OAuth2Client(
+                _settings.ClientId,
+                _settings.ClientSecret,
+                _settings.RedirectUri
+            );
 
-            //var tokenResponse = await oauth2Client.GetBearerTokenAsync(authCode);
-            //_accessToken = tokenResponse.AccessToken; // Store the access token for future API calls
-            //return _accessToken;
-            return "";
+            var tokenResponse = await oauth2Client.GetBearerTokenAsync(authCode);
+            _accessToken = tokenResponse.AccessToken; // Store the access token for future API calls
+            return _accessToken;
         }
     }
 }
